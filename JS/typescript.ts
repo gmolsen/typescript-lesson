@@ -11,37 +11,68 @@ function sayHello():string {
 	return "hello";
 };
 
-class Student {
-	//public by default
-	Name:  string;
-	Color: string;
-	Number: number;
+class Customer {
+	Id: number;
+	Name: string;
 
 	//Log method of type void does not return a value
-	Log(): void {
-		console.log(this.Name, this.Color, this.Number);
+	public Log(): void {
+		console.log(this.Id, this.Name);
 	}
-		//constructor for initializing instances of Customer
-		constructor(Name: string, Color: string, Number: number) {
-			this.Name = "*NO NAME*";
-			this.Color = "*NO COLOR*";
-			this.Number = 0;
-		}
+	//constructor for initializing instances of Customer
+	constructor(id: number, name: string) {
+		this.Id = id;
+		this.Name = name;
 	}
+}
 
 //c#: Customer cust = new Customer();
 //constructor "Customer()" initializes instance "cust" with class properties
-let stud:Student = new Student("Sue Ann", "Green", 7);
-stud.Log();
+let cust:Customer = new Customer(1, "Max Tech Train"); 
+cust.Log();
 
-let studList = [
-	new Student("Sue Ann", "Green", 7)
-	new Student("Greg", "Black", 4)
-	new Student("Eric B", "Blue", 11)
-	new Student("Bob", "Black", 13)
+let custList = [
+	new Customer(2, "P&G"),
+	new Customer(3, "GE"),
+	new Customer(4, "Great American"),
+	new Customer(5, "TQL")
+]
+
+for(let cust of custList) {
+	cust.Log();
+}
+
+class Student {
+	Name: string;
+	Color: string;
+	Number: number;
+
+	// constructor(Name: string, Color: string, Number: string) {
+	// 		this.Name = "*NO NAME*";
+	// 		this.Color = "*NO COLOR*";
+	// 		this.Number = 0;
+	// 	}
+
+	constructor(name: string, color: string, number: number) {
+		this.Name = name;
+		this.Color = color;
+		this.Number = number;
+	}
+
+	public debug(): void {
+		console.log(this.Number, this.Name, this.Color);
+	}
+}
+
+let students = [
+	new Student("Sue Ann", "Green", 7);
+	new Student("Sue Ann", "Green", 7),
+	new Student("Greg", "Black", 4),
+	new Student("Eric B", "Blue", 11),
+	new Student("Bob", "Black", 13),
 	new Student("Eric S", "Green", 13)
 	]
 
-for (let stud of studList) {
-	stud.Log();
+for (let student of students) {
+	student.debug();
 }
